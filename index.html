@@ -4,6 +4,8 @@
 		<meta charset="UTF-8">
 		<title>Todo App</title>
 		<link rel="stylesheet" type="text/css" href="lib/bower_components/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+
 		<link rel="stylesheet" type="text/css" href="css/main.css">
 	</head>
 	<body ng-app="TodoApp">
@@ -41,7 +43,12 @@
 				<h1>Todo List</h1>	
 				<div class = "row">
 					<div class = "col-xs-6 col-xs-offset-3">
-						<input type="text" placeholder="Search for.." ng-model="searchText">
+						<div class="input-group">
+							<span class="input-group-btn">
+								<button class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i></button>
+							</span>
+						<input type="text" class="form-control" placeholder="Search for.." ng-model="searchText">
+						</div>
 					</div>
 				</div>				
 					<div ng-repeat = "thingy in items | filter:searchText"><!-- this is a for each loop the current one is called thingy don't need to use $scope in html the curly brackets let us know that it is a variable-->
