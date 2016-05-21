@@ -1,7 +1,4 @@
-app.controller("TodoCtrl", function($scope) {
-	$scope.welcome = "Hello";
-	$scope.showListView = true;//if set to true then the button must be clicked to see it;
-	$scope.task = "";
+app.controller("ItemNewCtrl", function($scope) {
 	$scope.newTask = {};
 	$scope.items = [
 	{
@@ -44,15 +41,4 @@ app.controller("TodoCtrl", function($scope) {
 		$scope.items.push($scope.newTask);
 		$scope.newTask = "";
 	};
-	$scope.newItem= function(){
-		console.log("newItem");
-		$scope.showListView = false;
-	};
-	$scope.allItem = function(){
-		console.log("allItem");
-		$scope.showListView = true;
-	};
-
-
-
-});
+	});
