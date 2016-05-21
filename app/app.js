@@ -1,5 +1,4 @@
-//place for modules or plugins in parentheses
-var app = angular.module("TodoApp", []);
+var app = angular.module("TodoApp", []);//place for modules or plugins in parentheses
 
 app.controller("NavCtrl", function($scope ){
 	$scope.navItems = [{name: "Logout"}, {name: "All Items"}, {name: "New Item"}];
@@ -7,7 +6,7 @@ app.controller("NavCtrl", function($scope ){
 
 app.controller("TodoCtrl", function($scope) {
 	$scope.welcome = "Hello";
-	$scope.showListView = false;//if set to true then the button must be clicked to see it;
+	$scope.showListView = true;//if set to true then the button must be clicked to see it;
 	$scope.task = "";
 	$scope.newTask = {};
 	$scope.items = [

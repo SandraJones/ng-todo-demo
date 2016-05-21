@@ -39,6 +39,19 @@
 	<div class= "col-xs-10 col-xs-offset-1 main-container">
 			<div class="col-xs-12" ng-show="showListView">
 				<h1>Todo List</h1>					
+					<div ng-repeat = "thingy in items"><!-- this is a for each loop the current one is called thingy don't need to use $scope in html the curly brackets let us know that it is a variable-->
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<div class = "col-xs-1"><input type="checkbox" name=""/></div>
+								<div class = "col-xs-6">{{thingy.task}}</div>
+								<div class = "col-xs-1">{{thingy.assignedTo}}</div>
+								<div class = "col-xs-1">{{thingy.location}}</div>
+								<div class = "col-xs-1">{{thingy.urgency}}</div>
+								<div class = "col-xs-1">{{thingy.dueDate}}</div>
+								<div class = "col-xs-1"><button class="btn btn-danger">X</button></div>
+							</div>
+						</div>	
+					</div>	
 			</div>
 			<div class="col-xs-12" ng-show="!showListView">			
 				<h1>New Todo</h1>
@@ -72,24 +85,6 @@
 			</div>
 	</div>
 	</div>
-
-
-
-<!-- {
-		id: 1, 
-		task: "grade quizzes",
-		isCompleted: false,
-		dueDate: "12/5/17",
-		assignedTo: "Joe",
-		location: "NSS",
-		urgency: "high",
-		dependencies: ["wifi", "tissues", "vodka"]
-	}, -->
-
-
-
-
-
 		</div>
 		<script type="text/javascript" src="lib/bower_components/jquery/dist/jquery.min.js"></script>
 		<script type="text/javascript" src="lib/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
