@@ -1,2 +1,8 @@
 body {
   background-color: bisque; }
+
+.main-container {
+  border: 2px dashed red; }
+
+h1 {
+  text-align: center; }
