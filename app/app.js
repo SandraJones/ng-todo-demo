@@ -9,7 +9,7 @@ app.config(function($routeProvider){
 		templateUrl: "partials/item-new.html",
 		controller: "ItemNewCtrl"
 		
-	}).when("/items/details", {
+	}).when("/items/:itemId", {//this will be dynamically changing and pulling the id right out of the url
 		templateUrl: "partials/item-details.html",
 		controller: "ItemViewCtrl"
 	}).
