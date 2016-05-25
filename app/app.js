@@ -9,10 +9,11 @@ app.config(function($routeProvider){
 		templateUrl: "partials/item-new.html",
 		controller: "ItemNewCtrl"
 		
-	}).when("/items/:itemId", {//this will be dynamically changing and pulling the id right out of the url
+	}).when("/items/itemId", {//this will be dynamically changing and pulling the id right out of the url
 		templateUrl: "partials/item-details.html",
 		controller: "ItemViewCtrl"
 	}).
 	otherwise("/items/list");
 });
 
+//app tells computer that app.config is going to connect the index partial to the specific controller

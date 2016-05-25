@@ -8,12 +8,13 @@
 						<input type="text" class="form-control" placeholder="Search for.." ng-model="searchText">
 						</div>
 					</div>
-				</div>				
+				</div>	
+				<!-- thingy in items is $scope.items	searchText is also attached to $scope -->		
 					<div ng-repeat = "thingy in items | filter:searchText"><!-- this is a for each loop the current one is called thingy don't need to use $scope in html the curly brackets let us know that it is a variable-->
 						<div class="panel panel-default">
 							<div class="panel-body">
 								<div class = "col-xs-1"><input type="checkbox" name=""/></div>
-								<div class = "col-xs-6"><a ng-href="#/items/{{thingy.id}}">{{thingy.task}}</a></div>
+								<div class = "col-xs-6"><a ng-href="#/items/{{thingy.id}}">{{thingy.task}}</a></div>  
 								<div class = "col-xs-1">{{thingy.assignedTo}}</div>
 								<div class = "col-xs-1">{{thingy.location}}</div>
 								<div class = "col-xs-1">{{thingy.urgency}}</div>
