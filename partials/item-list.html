@@ -8,7 +8,10 @@
 						<input type="text" class="form-control" placeholder="Search for.." ng-model="searchText">
 						</div>
 					</div>
-				</div>	
+				</div>
+
+				<h3>In Progress</h3>
+
 				<div class="panel panel-default">
 						<div class="panel-body">
 							<div class = "col-xs-1"></div>
@@ -21,9 +24,9 @@
 					</div>	
 				<!-- thingy in items is $scope.items	searchText is also attached to $scope -->		
 					<div ng-repeat = "thingy in items | filter:searchText"><!-- this is a for each loop the current one is called thingy don't need to use $scope in html the curly brackets let us know that it is a variable-->
-						<div class="panel panel-default">
+						<div class="panel panel-default" ng-hide="thingy.isCompleted">
 							<div class="panel-body">
-								<div class = "col-xs-1"><input type="checkbox" name=""/></div>
+								<div class = "col-xs-1"><input type="checkbox" ng-model="thingy.isCompleted" ng-change="inputChange(thingy)"></div>
 								<div class = "col-xs-6"><a ng-href="#/items/{{thingy.id}}">{{thingy.task}}</a></div>  
 								<div class = "col-xs-1">{{thingy.assignedTo}}</div>
 								<div class = "col-xs-1">{{thingy.location}}</div>
@@ -34,3 +37,28 @@
 						</div>	
 				</div>	
 
+				<h3>Completed</h3>
+						<div class="panel panel-default">
+								<div class="panel-body">
+									<div class = "col-xs-1"></div>
+									<div class = "col-xs-6">Task</div>  
+									<div class = "col-xs-1">AssignedTo</div>
+									<div class = "col-xs-1">Location</div>
+									<div class = "col-xs-1">Urgency</div>
+									<div class = "col-xs-1">DueDate</div>
+								</div>
+							</div>	
+						<!-- thingy in items is $scope.items	searchText is also attached to $scope -->		
+							<div ng-repeat = "thingy in items | filter: {isCompleted: true}"><!-- this is a for each loop the current one is called thingy don't need to use $scope in html the curly brackets let us know that it is a variable-->
+								<div class="panel panel-default">
+									<div class="panel-body">
+										<div class = "col-xs-1"><input type="checkbox" ng-model="thingy.isCompleted" ng-change="inputChange(thingy)"></div>
+										<div class = "col-xs-6"><a ng-href="#/items/{{thingy.id}}">{{thingy.task}}</a></div>  
+										<div class = "col-xs-1">{{thingy.assignedTo}}</div>
+										<div class = "col-xs-1">{{thingy.location}}</div>
+										<div class = "col-xs-1">{{thingy.urgency}}</div>
+										<div class = "col-xs-1">{{thingy.dueDate}}</div>
+										<div class = "col-xs-1">
+									</div>
+								</div>	
+						</div>	
