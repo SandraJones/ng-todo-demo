@@ -1,4 +1,5 @@
-var app = angular.module("TodoApp", ["ngRoute"]);//place for modules or plugins in parentheses
+var app = angular.module("TodoApp", ["ngRoute"])
+	.constant("firebaseURL", "https://todo-appskj.firebaseio.com/");//place for modules or plugins in parentheses
 
 app.config(function($routeProvider){
 	$routeProvider.when("/items/list", {
@@ -9,7 +10,7 @@ app.config(function($routeProvider){
 		templateUrl: "partials/item-new.html",
 		controller: "ItemNewCtrl"
 		
-	}).when("/items/itemId", {//this will be dynamically changing and pulling the id right out of the url
+	}).when("/items/:itemId", {//this will be dynamically changing and pulling the id right out of the url
 		templateUrl: "partials/item-details.html",
 		controller: "ItemViewCtrl"
 	}).

@@ -1,12 +1,12 @@
 "use strict";
-app.factory("itemStorage", function($q, $http){  //order of q and http here do not matter if I do it this way
+app.factory("itemStorage", function($q, $http, firebaseURL){  //order of q and http here do not matter if I do it this way
 	//q handles promises for angular; q is angular's version of promises and http is like xhr
 	//"itemStorage" is the name your project knows your factory by
 
 	var getItemList=function(){  //the whole todo or chore
 	var items = [];
 		return $q(function(resolve, reject){
-		$http.get("https://todo-appskj.firebaseio.com/items.json")
+		$http.get(firebaseURL + "items.json")
 		   .success(function(itemObject) {
 			  	var itemCollection = itemObject;
 			   	console.log("itemObject", itemObject);
@@ -26,10 +26,10 @@ app.factory("itemStorage", function($q, $http){  //order of q and http here do n
 
 
 
-var detleteItem = function(itemId) {
+var deleteItem = function(itemId) {
 	return $q(function(resolve, reject){
 			$http
-				.delete(`https://todo-appskj.firebaseio.com/items/${itemId}.json`)
+				.delete(firebaseURL + "items/" + itemId + ".json")
 				.success(function(objectFromFirebase){
 					resolve(objectFromFirebase)
 				})
@@ -40,7 +40,7 @@ var detleteItem = function(itemId) {
 	var postNewItem= function(newItem){
 		return $q(function(resolve, reject){
 			$http.post(
-					"https://todo-appskj.firebaseio.com/items.json",			
+					firebaseURL + "items.json",			
 					JSON.stringify({
 						assignedTo: newItem.assignedTo,
 						dueDate: newItem.dueDate,

@@ -1,4 +1,4 @@
-app.controller("ItemNewCtrl", function($scope, $location, $http, itemStorage) {
+app.controller("ItemNewCtrl", function($scope, $location, itemStorage) {
 	$scope.newTask = {
 		//want to add in the properties that I'm going to need
 		//we want our firebase data to all have the same structure
@@ -14,7 +14,7 @@ app.controller("ItemNewCtrl", function($scope, $location, $http, itemStorage) {
 
 	$scope.addNewItem = function() {
 		itemStorage.postNewItem($scope.newTask)
-			.then(function successCallback(response){
+			.then(function successCallback(response){  //after function, you put the function name
 				console.log(response);
 				$location.url("/items/list");
 			});

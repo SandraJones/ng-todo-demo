@@ -1,7 +1,7 @@
 <h1>Todo List</h1>	
 				<div class = "row">
 					<div class = "col-xs-6 col-xs-offset-3">
-						<div class="input-group">
+						<div class="input-group search-bar-spacing">
 							<span class="input-group-btn">
 								<button class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i></button>
 							</span>
@@ -9,6 +9,16 @@
 						</div>
 					</div>
 				</div>	
+				<div class="panel panel-default">
+						<div class="panel-body">
+							<div class = "col-xs-1"></div>
+							<div class = "col-xs-6">Task</div>  
+							<div class = "col-xs-1">AssignedTo</div>
+							<div class = "col-xs-1">Location</div>
+							<div class = "col-xs-1">Urgency</div>
+							<div class = "col-xs-1">DueDate</div>
+						</div>
+					</div>	
 				<!-- thingy in items is $scope.items	searchText is also attached to $scope -->		
 					<div ng-repeat = "thingy in items | filter:searchText"><!-- this is a for each loop the current one is called thingy don't need to use $scope in html the curly brackets let us know that it is a variable-->
 						<div class="panel panel-default">

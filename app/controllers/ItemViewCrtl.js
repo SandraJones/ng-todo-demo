@@ -8,7 +8,7 @@ app.controller("ItemViewCtrl", function($scope, $routeParams, itemStorage) { //a
 		$scope.items = itemCollection;
 
 		$scope.selectedItem = $scope.items.filter(function(itemDoesntMatter){//.filter loops thru the array and passes one item in
-			return item.id === $routeParams.itemId;
+			return itemDoesntMatter.id === $routeParams.itemId;
 		})[0];
 	})
 });
