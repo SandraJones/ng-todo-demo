@@ -1,4 +1,7 @@
 app.controller("ItemNewCtrl", function($scope, $location, itemStorage) {
+	$scope.title = "New Item";
+	$scope.submitButtonText = "addNewItem";
+
 	$scope.newTask = {
 		//want to add in the properties that I'm going to need
 		//we want our firebase data to all have the same structure
