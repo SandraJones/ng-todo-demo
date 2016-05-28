@@ -7,11 +7,8 @@ app.factory("itemStorage", function($q, $http, firebaseURL){
 		$http.get(firebaseURL + "items.json")
 		   .success(function(itemObject) {
 			  	var itemCollection = itemObject;
-			   	console.log("itemObject", itemObject);
-			   	Object.keys(itemCollection).forEach(function(key){ //returns an array of all the keys in the object, then it goes thru every key in that array and putting keyinto the funciton stores that value
-			   		//give the obj at this spot an id property
-			   		itemCollection[key].id=key;//adding an id=key is the firebase id
-			   		//pushing the object into the items array
+			   	Object.keys(itemCollection).forEach(function(key){ 
+			   		itemCollection[key].id=key;
 			   		items.push(itemCollection[key]);
 			   	})
 				  resolve(items);
@@ -121,4 +118,10 @@ app.factory("itemStorage", function($q, $http, firebaseURL){
 
 // line 1 //order of q and http here do not matter if I do it this way
 	//q handles promises for angular; q is angular's version of promises and http is like xhr
-	//"itemStorage" is the name your project knows your factory by
+	//"itemStorage" is the name your project knows your factory b
+// ==========================================
+// Object.keys(itemCollection).forEach(function(key){ //returns an array of all the keys in the object, then it goes thru every key in that array and putting keyinto the funciton stores that value
+			   		//give the obj at this spot an id property
+			   		// itemCollection[key].id=key;//adding an id=key is the firebase id
+			   		//pushing the object into the items array
+			   		// items.push(itemCollection[key]);
