@@ -3,10 +3,17 @@
 app.controller("LoginCtrl", function($scope, $location, $http, firebaseURL, AuthFactory){  //libraries, constants, then ones I make
 	let ref = new Firebase(firebaseURL);
 
+	// $scope.hasUser = false;
+
+
+
 	$scope.account = {
 		email: "",
 		password: ""
 	};//clears out info when you get there
+	if($location.path() === "/logout") {
+		ref.unauth();  //ref.unauth is killing your auth token
+	}
 
 	 $scope.register = () => {
         console.log("you clicked register");
@@ -28,6 +35,7 @@ app.controller("LoginCtrl", function($scope, $location, $http, firebaseURL, Auth
     	AuthFactory
     		.authenticate($scope.account)
     		.then(() => {
+    			// $scope.hasUser = true;
     			$location.path("/");
     			$scope.$apply(); //.apply is needed to help angular get you to the right path within firebase 
     		})
