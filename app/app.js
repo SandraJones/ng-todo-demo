@@ -2,7 +2,12 @@ var app = angular.module("TodoApp", ["ngRoute"])
 	.constant("firebaseURL", "https://todo-appskj.firebaseio.com/");//place for modules or plugins in parentheses
 
 app.config(function($routeProvider){
-	$routeProvider.when("/items/list", {
+	$routeProvider
+	.when("/", {
+		templateUrl: "partials/item-list.html",
+		controller: "ItemListCtrl"
+	
+	}).when("/items/list", { 
 		templateUrl: "partials/item-list.html",
 		controller:"ItemListCtrl"
 
@@ -18,7 +23,11 @@ app.config(function($routeProvider){
 		templateUrl: 'partials/item-new.html',  
 		controller: "ItemEditCtrl"
 	}).
-	otherwise("/items/list");
+	when("/login", {
+		templateUrl: "partials/login.html",
+		controller: "LoginCtrl"
+	}).
+	otherwise("/");
 });
 
 //app tells computer that app.config is going to connect the index partial to the specific controller

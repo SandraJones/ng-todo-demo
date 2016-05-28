@@ -2,7 +2,7 @@ body {
   background-color: pink; }
 
 .main-container {
-  border: 2px dashed red; }
+  border: 2px solid grey; }
 
 h1 {
   text-align: center; }
