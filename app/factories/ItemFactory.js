@@ -1,3 +1,4 @@
+"use strict"
 app.factory("itemStorage", function($q, $http, firebaseURL, AuthFactory){
 	
 	var getItemList = function(){
@@ -31,7 +32,7 @@ app.factory("itemStorage", function($q, $http, firebaseURL, AuthFactory){
 
 	var postNewItem = function(newItem){
         let user = AuthFactory.getUser();
-        console.log("user", user)
+        console.log("user", user);
         return $q(function(resolve, reject) {
             $http.post(
                 firebaseURL + "items.json",
@@ -64,7 +65,7 @@ app.factory("itemStorage", function($q, $http, firebaseURL, AuthFactory){
 					reject(error);
 				});
 		});
-	}
+	};
 
 	var updateItem = function(itemId, newItem){
         let user = AuthFactory.getUser();
