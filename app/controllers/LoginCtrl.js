@@ -1,21 +1,22 @@
 "use strict";
 
-app.controller("LoginCtrl", function($scope, $location, $http, firebaseURL, AuthFactory){  //libraries, constants, then ones I make
-	let ref = new Firebase(firebaseURL);
+app.controller("LoginCtrl", function($scope, $rootScope, $location, firebaseURL, AuthFactory){
+    let ref = new Firebase(firebaseURL);
 
-	// $scope.hasUser = false;
+    // $scope.hasUser = false;
+
+    $scope.account = {
+        email: "",
+        password: ""
+    };
 
 
+    if($location.path() === "/logout"){
+        ref.unauth();
+        $rootScope.isActive = false;
+    }
 
-	$scope.account = {
-		email: "",
-		password: ""
-	};//clears out info when you get there
-	if($location.path() === "/logout") {
-		ref.unauth();  //ref.unauth is killing your auth token
-	}
-
-	 $scope.register = () => {
+    $scope.register = () => {
         console.log("you clicked register");
         ref.createUser({
             email: $scope.account.email,
@@ -30,14 +31,26 @@ app.controller("LoginCtrl", function($scope, $location, $http, firebaseURL, Auth
         });
     };
 
+
     $scope.login = () => {
-    	console.log("youclickedlogin");
-    	AuthFactory
-    		.authenticate($scope.account)
-    		.then(() => {
-    			// $scope.hasUser = true;
-    			$location.path("/");
-    			$scope.$apply(); //.apply is needed to help angular get you to the right path within firebase 
-    		})
+        console.log("you clicked login");
+        AuthFactory
+            .authenticate($scope.account)
+            .then(() => {
+                // $scope.hasUser = true;
+                $rootScope.isActive = true;
+                $location.path("/");
+                $scope.$apply();
+            })
+
+
+
+
+
+
+
+
+
     };
-});
+
+})

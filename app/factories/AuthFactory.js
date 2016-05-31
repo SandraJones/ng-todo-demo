@@ -1,36 +1,35 @@
 "use strict";
-
 app.factory("AuthFactory", function(firebaseURL) {
   let ref = new Firebase(firebaseURL);
   let currentUserData = null;
 
-  return {  //returning a bunch of methods here
+  return {
     /*
       Determine if the client is authenticated
      */
     isAuthenticated () {
-      let authData = ref.getAuth();//.getAuth is a firebase method
-      return (authData) ? true : false;  //if they exist we return true; chk firebase login area on firebase
+      let authData = ref.getAuth();
+      return (authData) ? true : false;
     },
 
-    getUser () {  //important because we are going to chk against this fn
+    getUser () {
       return currentUserData;
     },
 
     /*
-      Authenticate the client via Firebase  this is how we chk login
+      Authenticate the client via Firebase
      */
-    authenticate (credentials) {  //one input credentials
+    authenticate (credentials) {
       return new Promise((resolve, reject) => {
-        ref.authWithPassword({  //.authWithPassword is a firebase method
-          "email": credentials.email,  //passing the account info in here
+        ref.authWithPassword({
+          "email": credentials.email,
           "password": credentials.password
-        }, (error, authData) => {   
+        }, (error, authData) => {
           if (error) {
             reject(error);
           } else {
             console.log("authWithPassword method completed successfully");
-            currentUserData = authData;  //auth data is what is returned, we are overwriting currentUserData variable at top
+            currentUserData = authData;
             resolve(authData);
           }
         });
